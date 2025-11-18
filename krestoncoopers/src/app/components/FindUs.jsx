@@ -16,7 +16,7 @@ const FindUsSection = ({
   description = "Visit our office at Fudji Avenue for in-person consultations.",
   location = "Fudji Avenue Accra, Ghana", // <--- UPDATED DEFAULT LOCATION
   mapHeight = "450px",
-  apiKey = "AIzaSyD0q5xWi9J3WtHm4wh5D72fNnjSb9jmhbc" // Remember to pass your API key via environment variables!
+  apiKey = process.env.NEXT_PUBLIC_GOOGLE_API_KEY // Remember to pass your API key via environment variables!
 }) => {
   
   // --- 1. Utility & Configuration ---
