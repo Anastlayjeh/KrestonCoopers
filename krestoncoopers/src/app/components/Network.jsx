@@ -23,7 +23,7 @@ const GlobalMapPlaceholder = () => (
       */}
 
       <img
-        src="./World.png"
+        src="./World.webp"
         alt="World map"
         className="w-full h-full object-cover object-center block"
       />
