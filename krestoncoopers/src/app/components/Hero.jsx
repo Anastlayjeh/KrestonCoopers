@@ -16,12 +16,12 @@ export default function Hero() {
       accentColor: "text-[#F2A634]", // Kreston Orange more yellow
     },
     dubai: {
-      bg: "from-[#0F172A] to-[#1E293B]",
+      bg: "from-blue-900 to-blue-800",
       titlePart1: "International",
       titleHighlight: "Audit",
       titlePart2: "& Advisory Experts",
       desc: "Serving corporations in the UAE with world-class financial, audit, and compliance services.",
-      image: "/World.webp",
+      image: "/building.webp",
       accentColor: "text-[#F2A634]", // same orange, or change per design
     },
   };
