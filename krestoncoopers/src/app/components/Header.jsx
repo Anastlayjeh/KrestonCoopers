@@ -19,14 +19,13 @@ const XIcon = (props) => (
 );
 
 export default function Header() {
-  const [isVisible, setIsVisible] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [office, setOffice] = useState("ghana");
 
   useEffect(() => {
-    setIsVisible(true);
-
-    const savedOffice = localStorage.getItem("office");
+    // Normalize any legacy value ('uae') to the new key ('dubai')
+    let savedOffice = localStorage.getItem("office");
+    if (savedOffice === "uae") savedOffice = "dubai";
     if (savedOffice) setOffice(savedOffice);
 
     const handleResize = () => {
@@ -39,13 +38,13 @@ export default function Header() {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   const switchOffice = () => {
-    const newOffice = office === "ghana" ? "uae" : "ghana";
+    // Use 'dubai' (matches Hero component) instead of 'uae'
+    const newOffice = office === "ghana" ? "dubai" : "ghana";
     setOffice(newOffice);
     localStorage.setItem("office", newOffice);
+    // Dispatch custom event
     window.dispatchEvent(new CustomEvent("office-changed", { detail: newOffice }));
   };
-
-  const baseAnimationClasses = `transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-[5px]"}`;
 
   const navLinks = (
     <>
@@ -59,8 +58,9 @@ export default function Header() {
   return (
     <nav className="w-full bg-white shadow-md py-6 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto flex flex-wrap md:flex-nowrap items-center justify-between px-4 md:px-6 gap-4">
+
         {/* LOGO */}
-        <div className={`flex items-center gap-3 ${baseAnimationClasses}`}>
+        <div className="flex items-center gap-3">
           <div className="w-40 h-10 md:w-60 md:h-16 flex items-center">
             <Link href="/">
               <img src="/Asset-6-8.webp" alt="Logo" className="h-full object-contain" />
@@ -79,11 +79,10 @@ export default function Header() {
             onClick={switchOffice}
             className="ml-auto flex-shrink-0 flex items-center gap-3 px-4 py-2 border rounded-full shadow-sm cursor-pointer hover:bg-gray-50 transition relative min-w-[230px]"
           >
-            {/* Label */}
             <span className="text-gray-500 font-medium text-sm">Locations</span>
 
             {/* Ghana */}
-            <div className={`flex items-center gap-2 transition ${office === "ghana" ? "text-blue-600 font-semibold" : "text-gray-600"}`}>
+            <div className={`flex items-center gap-2 transition ${office === "ghana" ? "text-[#F2A634] font-semibold" : "text-gray-600"}`}>
               <img src="/Flag_of_Ghana.svg.webp" className="w-8 h-5" /> Ghana
             </div>
 
@@ -93,7 +92,7 @@ export default function Header() {
             </div>
 
             {/* UAE */}
-            <div className={`flex items-center gap-2 transition ${office === "uae" ? "text-blue-600 font-semibold" : "text-gray-600"}`}>
+            <div className={`flex items-center gap-2 transition ${office === "dubai" ? "text-[#F2A634] font-semibold" : "text-gray-600"}`}>
               <img src="/Flag-United-Arab-Emirates.webp" className="w-8 h-5" /> Dubai
             </div>
           </div>
@@ -107,19 +106,19 @@ export default function Header() {
             className="flex items-center gap-1 px-2 py-1 border rounded-full shadow-sm cursor-pointer hover:bg-gray-50 transition"
           >
             <span className="text-gray-500 text-xs font-medium">Locations</span>
-            <div className={`flex items-center gap-1 text-xs ${office === "ghana" ? "text-blue-600 font-semibold" : "text-gray-600"}`}>
+            <div className={`flex items-center gap-1 text-xs ${office === "ghana" ? "text-[#F2A634] font-semibold" : "text-gray-600"}`}>
               <img src="/Flag_of_Ghana.svg.webp" className="w-4 h-4" /> Ghana
             </div>
             <div className="relative w-10 h-4 bg-gray-300 rounded-full flex items-center px-0.5">
               <div className={`absolute bg-white w-3 h-3 rounded-full shadow-md transition-all duration-300 ${office === "ghana" ? "left-0.5" : "left-5"}`}></div>
             </div>
-            <div className={`flex items-center gap-1 text-xs ${office === "uae" ? "text-blue-600 font-semibold" : "text-gray-600"}`}>
+            <div className={`flex items-center gap-1 text-xs ${office === "dubai" ? "text-[#F2A634] font-semibold" : "text-gray-600"}`}>
               <img src="/Flag-United-Arab-Emirates.webp" className="w-4 h-4" /> Dubai
             </div>
           </div>
 
           {/* MENU BUTTON */}
-          <button className="text-gray-600 p-2" onClick={toggleMenu}>
+          <button className="text-gray-600 p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
             {isMenuOpen ? <XIcon className="h-6 w-6" /> : <MenuIcon className="h-6 w-6" />}
           </button>
         </div>
