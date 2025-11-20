@@ -23,7 +23,6 @@ export default function Header() {
   const [office, setOffice] = useState("ghana");
 
   useEffect(() => {
-    // Normalize any legacy value ('uae') to the new key ('dubai')
     let savedOffice = localStorage.getItem("office");
     if (savedOffice === "uae") savedOffice = "dubai";
     if (savedOffice) setOffice(savedOffice);
@@ -35,14 +34,10 @@ export default function Header() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-
   const switchOffice = () => {
-    // Use 'dubai' (matches Hero component) instead of 'uae'
     const newOffice = office === "ghana" ? "dubai" : "ghana";
     setOffice(newOffice);
     localStorage.setItem("office", newOffice);
-    // Dispatch custom event
     window.dispatchEvent(new CustomEvent("office-changed", { detail: newOffice }));
   };
 
@@ -69,51 +64,82 @@ export default function Header() {
         </div>
 
         {/* DESKTOP NAV */}
-        <div className="hidden md:flex flex-1 flex-wrap items-center gap-4 md:gap-8">
-          <div className="flex flex-wrap gap-4 md:gap-8 text-gray-600 font-medium text-base">
+        <div className="hidden md:flex flex-1 items-center gap-8">
+
+          <div className="flex gap-8 text-gray-600 font-medium text-base">
             {navLinks}
           </div>
 
-          {/* OFFICE TOGGLE */}
+          {/* NEW DESKTOP TOGGLE */}
           <div
             onClick={switchOffice}
-            className="ml-auto flex-shrink-0 flex items-center gap-3 px-4 py-2 border rounded-full shadow-sm cursor-pointer hover:bg-gray-50 transition relative min-w-[230px]"
+            className="ml-auto flex items-center gap-4 bg-white shadow-sm rounded-full px-4 py-2 cursor-pointer transition border min-w-[310px]"
           >
-            <span className="text-gray-500 font-medium text-sm">Locations</span>
-
-            {/* Ghana */}
-            <div className={`flex items-center gap-2 transition ${office === "ghana" ? "text-[#F2A634] font-semibold" : "text-gray-600"}`}>
-              <img src="/Flag_of_Ghana.svg.webp" className="w-8 h-5" /> Ghana
+            {/* Ghana Button */}
+            <div
+              className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 ${
+                office === "ghana" ? "bg-[#FFBF00] text-white shadow-md" : "text-gray-700"
+              }`}
+            >
+              <img
+                src="/Flag_of_Ghana.svg.webp"
+                className="w-9 h-9 rounded-full object-cover"
+              />
+              <span className="text-sm font-semibold">Ghana Office</span>
+              {office === "ghana" && <span className="text-white text-lg">✓</span>}
             </div>
 
-            {/* Toggle Circle */}
-            <div className="relative w-14 h-6 bg-gray-300 rounded-full flex items-center px-1">
-              <div className={`absolute bg-white w-5 h-5 rounded-full shadow-md transition-all duration-300 ${office === "ghana" ? "left-1" : "left-8"}`}></div>
+            {/* Toggle middle */}
+            <div className="relative w-10 h-5 bg-gray-300 rounded-full">
+              <div
+                className={`absolute bg-white w-4 h-4 rounded-full shadow-md top-0.5 transition-all duration-300 ${
+                  office === "ghana" ? "left-1" : "left-5"
+                }`}
+              />
             </div>
 
-            {/* UAE */}
-            <div className={`flex items-center gap-2 transition ${office === "dubai" ? "text-[#F2A634] font-semibold" : "text-gray-600"}`}>
-              <img src="/Flag-United-Arab-Emirates.webp" className="w-8 h-5" /> Dubai
+            {/* Dubai Button */}
+            <div
+              className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 ${
+                office === "dubai" ? "bg-[#0A3F8B] text-white shadow-md" : "text-gray-700"
+              }`}
+            >
+              <img
+                src="/Flag-United-Arab-Emirates.webp"
+                className="w-9 h-9 rounded-full "
+              />
+              <span className="text-sm font-semibold">Dubai Office</span>
+              {office === "dubai" && <span className="text-white text-lg">✓</span>}
             </div>
           </div>
         </div>
 
-        {/* MOBILE TOGGLE + MENU BUTTON */}
-        <div className="flex items-center gap-3 md:hidden">
-          {/* MOBILE OFFICE TOGGLE */}
+        {/* MOBILE TOGGLE + MENU ICON */}
+        <div className="flex items-center justify-between w-full p-2 gap-3 md:hidden">
+
+          {/* NEW MOBILE TOGGLE */}
           <div
             onClick={switchOffice}
-            className="flex items-center gap-1 px-2 py-1 border rounded-full shadow-sm cursor-pointer hover:bg-gray-50 transition"
+            className="flex items-center gap-2 bg-white shadow-sm border rounded-full px-3 py-1 cursor-pointer"
           >
-            <span className="text-gray-500 text-xs font-medium">Locations</span>
-            <div className={`flex items-center gap-1 text-xs ${office === "ghana" ? "text-[#F2A634] font-semibold" : "text-gray-600"}`}>
-              <img src="/Flag_of_Ghana.svg.webp" className="w-4 h-4" /> Ghana
+            {/* Ghana */}
+            <div className={`flex items-center gap-1 ${office === "ghana" ? "text-[#0A3F8B] font-semibold" : "text-gray-600"}`}>
+              <img src="/Flag_of_Ghana.svg.webp" className="w-6 h-6 rounded-full " />
+              <span className="text-xs">Ghana</span>
             </div>
-            <div className="relative w-10 h-4 bg-gray-300 rounded-full flex items-center px-0.5">
-              <div className={`absolute bg-white w-3 h-3 rounded-full shadow-md transition-all duration-300 ${office === "ghana" ? "left-0.5" : "left-5"}`}></div>
+
+            <div className="relative w-8 h-4 bg-gray-300 rounded-full">
+              <div
+                className={`absolute bg-white w-3 h-3 rounded-full shadow-md top-0.5 transition-all duration-300 ${
+                  office === "ghana" ? "left-0.5" : "left-4"
+                }`}
+              />
             </div>
-            <div className={`flex items-center gap-1 text-xs ${office === "dubai" ? "text-[#F2A634] font-semibold" : "text-gray-600"}`}>
-              <img src="/Flag-United-Arab-Emirates.webp" className="w-4 h-4" /> Dubai
+
+            {/* Dubai */}
+            <div className={`flex items-center gap-1 ${office === "dubai" ? "text-[#0A3F8B] font-semibold" : "text-gray-600"}`}>
+              <img src="/Flag-United-Arab-Emirates.webp" className="w-6 h-6 rounded-full " />
+              <span className="text-xs">Dubai</span>
             </div>
           </div>
 
@@ -121,6 +147,7 @@ export default function Header() {
           <button className="text-gray-600 p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
             {isMenuOpen ? <XIcon className="h-6 w-6" /> : <MenuIcon className="h-6 w-6" />}
           </button>
+
         </div>
       </div>
 
