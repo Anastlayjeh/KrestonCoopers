@@ -10,12 +10,12 @@ const OFFICES = {
   GHANA: {
     name: 'Ghana Office',
     phone: '+233 242 754 688',
-    flagEmoji: <img src="../Flag_of_Ghana.svg.webp " className="w-13 h-10" alt="" />  ,
+    flagEmoji: <img src="/images/Flag_of_Ghana.svg.webp " className="w-13 h-10" alt="" />  ,
   },
   DUBAI: {
     name: 'Dubai Office',
     phone: '+971 55 286 6413',
-    flagEmoji: <img src="../Flag-United-Arab-Emirates.webp " className="w-13 h-10" alt="" />  ,
+    flagEmoji: <img src="/images/Flag-United-Arab-Emirates.webp " className="w-13 h-10" alt="" />  ,
   },
 };
 

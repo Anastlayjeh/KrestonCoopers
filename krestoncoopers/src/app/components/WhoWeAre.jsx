@@ -5,9 +5,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 // Use placeholder image URLs for demonstration (replace with actual paths)
-const OMAR_IMAGE = " Gemini_Generated_Image_brpqaxbrpqaxbrpq .webp"; // Placeholder path
-const MICHAEL_IMAGE = "Screenshot 2025-11-16 230001.webp"; // Placeholder path
-const SARAH_IMAGE = "WhatsApp Image 2025-11-16 at 22.47.00_85ff4c5f.webp"; // Placeholder path
+const OMAR_IMAGE = "/images/Omar.webp"; // Placeholder path
+const MICHAEL_IMAGE = "/images/Apoum.webp"; // Placeholder path
+const SARAH_IMAGE = "/images/Dabouss.webp"; // Placeholder path
 
 
 // Reusable Profile Card Component

@@ -12,7 +12,7 @@ export default function Hero() {
       titleHighlight: "Accounting",
       titlePart2: "& Business Advisory",
       desc: "Providing trusted financial and advisory services across Ghana, helping organizations grow with confidence.",
-      image: "/Omar.webp",
+      image: "/images/Omar.webp",
       accentColor: "text-[#F2A634]",
     },
     dubai: {
@@ -21,7 +21,7 @@ export default function Hero() {
       titleHighlight: "Audit",
       titlePart2: "& Advisory Experts",
       desc: "Serving corporations in the UAE with world-class financial, audit, and compliance services.",
-      image: "/Omar.webp",
+      image: "/images/Dabouss.webp",
       accentColor: "text-[#F2A634]",
     },
   };

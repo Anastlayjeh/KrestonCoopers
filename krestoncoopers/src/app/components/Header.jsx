@@ -57,8 +57,8 @@ export default function Header() {
         {/* LOGO */}
         <div className="flex items-center gap-3">
           <div className="w-40 h-10 md:w-60 md:h-16 flex items-center">
-            <Link href="/">
-              <img src="/Asset-6-8.webp" alt="Logo" className="h-full object-contain" />
+            <Link href="">
+              <img src="/images/kreston-coopers-logo.webp" alt="Logo" className="h-full object-contain" />
             </Link>
           </div>
         </div>
@@ -82,7 +82,7 @@ export default function Header() {
               }`}
             >
               <img
-                src="/Flag_of_Ghana.svg.webp"
+                src="/images/Flag_of_Ghana.svg.webp"
                 className="w-9 h-9 rounded-full object-cover"
               />
               <span className="text-sm font-semibold">Ghana Office</span>
@@ -105,7 +105,7 @@ export default function Header() {
               }`}
             >
               <img
-                src="/Flag-United-Arab-Emirates.webp"
+                src="/images/Flag-United-Arab-Emirates.webp"
                 className="w-9 h-9 rounded-full "
               />
               <span className="text-sm font-semibold">Dubai Office</span>
