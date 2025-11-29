@@ -4,7 +4,6 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function Hero() {
-  // Define all content data
   const content = {
     ghana: {
       bgImage: "/images/ghana-bg.webp",
@@ -26,75 +25,49 @@ export default function Hero() {
     },
   };
 
-  // State to hold the current office selection
   const [office, setOffice] = useState("ghana");
-
-  // Determine the content based on the current 'office' state
-  const current = content[office] || content.ghana; // Fallback to Ghana content
+  const current = content[office] || content.ghana;
 
   useEffect(() => {
     const mapOffice = (o) => (o === "uae" ? "dubai" : o);
+    const saved = mapOffice(localStorage.getItem("office"));
+    if (saved && content[saved] && saved !== office) setOffice(saved);
 
-    // 1. Initial Load from localStorage
-    const savedOffice = mapOffice(localStorage.getItem("office"));
-    if (savedOffice && content[savedOffice] && savedOffice !== office) {
-      setOffice(savedOffice);
-    }
-
-    // 2. Event Listener for office changes
     const handleOfficeChange = (event) => {
-      let newOffice;
-      if (event?.detail) {
-        newOffice = typeof event.detail === "string" ? event.detail : event.detail.office;
-      }
-      if (!newOffice) newOffice = mapOffice(localStorage.getItem("office")) || "ghana";
-
+      const newOffice = event?.detail || mapOffice(localStorage.getItem("office")) || "ghana";
       if (content[newOffice]) {
         setOffice(newOffice);
-        try {
-          localStorage.setItem("office", newOffice);
-        } catch {}
+        localStorage.setItem("office", newOffice);
       }
     };
 
-    // 3. Global window function setup
-    if (typeof window !== "undefined") {
-      window.setOffice = (name) => {
-        if (!name) return;
-        try { localStorage.setItem("office", name); } catch {}
-        window.dispatchEvent(new CustomEvent("office-changed", { detail: name }));
-      };
-    }
-
     window.addEventListener("office-changed", handleOfficeChange);
-    return () => window.removeEventListener("office-changed", handleOfficeChange);
-  }, [office]); // Dependency on 'office' ensures the correct value is used on re-render
+    window.setOffice = (name) => {
+      if (!name) return;
+      localStorage.setItem("office", name);
+      window.dispatchEvent(new CustomEvent("office-changed", { detail: name }));
+    };
 
-  // ... (rest of the component logic) ...
+    return () => window.removeEventListener("office-changed", handleOfficeChange);
+  }, [office]);
 
   return (
     <section className="relative w-full py-16 md:py-20">
-      {/* Background Image Container */}
+      {/* Background */}
       <div className="absolute inset-0 z-0">
-        <Image
-          src={current.bgImage}
-          alt="Background"
-          fill
-          className="object-cover"
-          priority
-        />
-        {/* Gradient Overlay */}
+        <Image src={current.bgImage} alt="Background" fill priority className="object-cover" />
         <div className="absolute inset-0 bg-gradient-to-br from-black/60 to-black/30" />
       </div>
 
-      {/* Main Content (Text and Image) - Flex Container */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 flex flex-col lg:flex-row items-center gap-10 md:gap-12 z-10">
-        
-        {/* Text Content - Allow it to grow on desktop (lg:) */}
+      {/* Content: text first, image second => mobile stacks text then image; desktop shows row */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 flex flex-col lg:flex-row items-center gap-10 md:gap-12">
+        {/* TEXT (first in DOM) */}
         <div className="flex-1 text-center lg:text-left text-white">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight">
-            {current.titlePart1} <br className="hidden sm:block" />
-            <span className={current.accentColor}>{current.titleHighlight}</span> <br />
+            {current.titlePart1}
+            <br className="hidden sm:block" />
+            <span className={current.accentColor}>{current.titleHighlight}</span>
+            <br />
             {current.titlePart2}
           </h1>
 
@@ -104,11 +77,10 @@ export default function Hero() {
 
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-8 md:mt-10 justify-center lg:justify-start">
             <Link href="/contact">
-              <button className="bg-[#F2A634] hover:bg-sky-600 text-white font-semibold px-6 py-3 sm:px-8 rounded-md transition w-full sm:w-auto">
+              <button className="bg-[#F2A634] hover:bg-blue-600 text-white font-semibold px-6 py-3 sm:px-8 rounded-md transition w-full sm:w-auto">
                 Contact Us
               </button>
             </Link>
-
             <Link href="/services">
               <button className="border border-white text-white hover:bg-white hover:text-blue-900 font-semibold px-6 py-3 sm:px-8 rounded-md transition w-full sm:w-auto">
                 Our Services
@@ -117,14 +89,14 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Hero Image - Explicitly set smaller size on mobile/tablet and fixed size on desktop */}
-        <div className="mt-10 lg:mt-0 relative w-full max-w-xs mx-auto        {/* Mobile: takes up to max-w-xs (320px) and centers */ sm:w-72 sm:h-72                 {/* Small Screens: Smaller fixed size */ md:w-80 md:h-80                 {/* Medium Screens: Slightly larger */ lg:w-[450px] lg:h-[450px]       {/* Desktop: Fixed large size */ lg:flex-none">                  {/* Ensures it doesn't try to grow/shrink based on flex rules on desktop */}
+        {/* IMAGE (second in DOM) - explicit mobile height so next/image fill works */}
+        <div className="relative w-full max-w-xs mx-auto h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 mt-10 lg:mt-0 lg:flex-none">
           <Image
             src={current.image}
-            alt="Hero Image"
+            alt="Hero image"
             fill
-            className="rounded-xl shadow-2xl object-cover"
             priority
+            className="rounded-xl shadow-2xl object-cover"
           />
         </div>
       </div>

@@ -124,7 +124,7 @@ export default function Header() {
           >
             {/* Ghana */}
             <div className={`flex items-center gap-1 ${office === "ghana" ? "text-[#0A3F8B] font-semibold" : "text-gray-600"}`}>
-              <img src="/Flag_of_Ghana.svg.webp" className="w-6 h-6 rounded-full " />
+              <img src="/images/Flag_of_Ghana.svg.webp" className="w-6 h-6 rounded-full " />
               <span className="text-xs">Ghana</span>
             </div>
 
@@ -138,7 +138,7 @@ export default function Header() {
 
             {/* Dubai */}
             <div className={`flex items-center gap-1 ${office === "dubai" ? "text-[#0A3F8B] font-semibold" : "text-gray-600"}`}>
-              <img src="/Flag-United-Arab-Emirates.webp" className="w-6 h-6 rounded-full " />
+              <img src="/images/Flag-United-Arab-Emirates.webp" className="w-6 h-6 rounded-full " />
               <span className="text-xs">Dubai</span>
             </div>
           </div>
