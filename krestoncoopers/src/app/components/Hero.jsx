@@ -60,15 +60,17 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-br from-black/60 to-black/30" />
       </div>
 
-      {/* Content: text first, image second => mobile stacks text then image; desktop shows row */}
+      {/* Content: Row layout on desktop, Column on mobile */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 flex flex-col lg:flex-row items-center gap-10 md:gap-12">
-        {/* TEXT (first in DOM) */}
-        {/* FIX: Added px-4 to the text container to prevent text overflow on small screens */}
-        <div className="flex-1 text-center lg:text-left text-white px-4"> 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight">
+        {/* TEXT */}
+        <div className="w-full text-center lg:text-left text-white lg:flex-1">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
             {current.titlePart1}
             <br className="hidden sm:block" />
-            <span className={current.accentColor}>{current.titleHighlight}</span>
+            
+            {/* SPACING FIX: Added mt-2 block to create vertical separation from the line above */}
+            <span className={current.accentColor + " break-words mt-2 block"}>{current.titleHighlight}</span>
+            
             <br />
             {current.titlePart2}
           </h1>
@@ -91,7 +93,7 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* IMAGE (second in DOM) - explicit mobile height so next/image fill works */}
+        {/* IMAGE */}
         <div className="relative w-full max-w-xs mx-auto h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 mt-10 lg:mt-0 lg:flex-none">
           <Image
             src={current.image}
