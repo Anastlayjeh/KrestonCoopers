@@ -1,3 +1,4 @@
+// Hero.jsx
 "use client";
 import Link from "next/link";
 import Image from "next/image";
@@ -62,7 +63,8 @@ export default function Hero() {
       {/* Content: text first, image second => mobile stacks text then image; desktop shows row */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 flex flex-col lg:flex-row items-center gap-10 md:gap-12">
         {/* TEXT (first in DOM) */}
-        <div className="flex-1 text-center lg:text-left text-white">
+        {/* FIX: Added px-4 to the text container to prevent text overflow on small screens */}
+        <div className="flex-1 text-center lg:text-left text-white px-4"> 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight">
             {current.titlePart1}
             <br className="hidden sm:block" />
