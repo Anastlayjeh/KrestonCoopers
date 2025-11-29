@@ -11,7 +11,7 @@ const FindUsSection = ({
   location = "Fudji Avenue Accra, Ghana",
   mapHeight = "450px",
   // 1. CORRECTED: Ensures the prop pulls from the correct env variable name
-  apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY 
+  apiKey ="AIzaSyD0q5xWi9J3WtHm4wh5D72fNnjSb9jmhbc" 
 }) => {
   
   // --- 1. Utility & Configuration ---
