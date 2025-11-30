@@ -21,9 +21,9 @@ const services = [
         />
       </svg>
     ),
-    title: 'Audit & Assurance',
+    title: 'Auditing',
     description:
-      'Independent audit services ensuring compliance and financial transparency for your stakeholders.',
+      'Thorough financial examination to enhance transparency and reliability.',
     link: '#',
   },
   {
@@ -43,9 +43,9 @@ const services = [
         />
       </svg>
     ),
-    title: 'Tax Advisory',
+    title: 'Excise Tax',
     description:
-      'Strategic tax planning and compliance services to optimize your tax position and minimize risks.',
+      'Specialized assistance in excise tax assessment and reporting.',
     link: '#',
   },
   {
@@ -65,9 +65,9 @@ const services = [
         />
       </svg>
     ),
-    title: 'Business Advisory',
+    title: 'Consulting',
     description:
-      'Strategic guidance and insights to drive business growth and operational efficiency.',
+      'Proactive insights and strategies to optimize financial performance.',
     link: '#',
   },
   {
@@ -87,9 +87,9 @@ const services = [
         />
       </svg>
     ),
-    title: 'Accounting Services',
+    title: 'Accounting',
     description:
-      'Complete bookkeeping and financial reporting solutions for businesses of all sizes.',
+      'Expert management of financial records for informed decision-making',
     link: '#',
   },
   {
@@ -109,8 +109,8 @@ const services = [
         />
       </svg>
     ),
-    title: 'Corporate Finance',
-    description: 'M&A advisory, valuations, and capital raising services for strategic transactions.',
+    title: 'VAT',
+    description: 'Hassle-free VAT registration, filing, and compliance guidance.',
     link: '#',
   },
   {

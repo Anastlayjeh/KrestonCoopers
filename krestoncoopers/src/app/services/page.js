@@ -12,7 +12,7 @@ export default function Home() {
     <>
         <Header />
         <Hero3/>
-        <Why/>
+        
         <Our/>
         <How/>
         <Proff/>

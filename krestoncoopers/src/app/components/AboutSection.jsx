@@ -47,7 +47,7 @@ export default function AboutSection() {
   const cards = [
     {
       icon: "🎖️",
-      title: "50+ Years Experience",
+      title: "15+ Years Experience",
       text:
         "Established expertise in accounting, audit, and business advisory services across multiple industries.",
     },
