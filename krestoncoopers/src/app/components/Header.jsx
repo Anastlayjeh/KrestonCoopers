@@ -25,13 +25,19 @@ export default function Header() {
   useEffect(() => {
     let savedOffice = localStorage.getItem("office");
     if (savedOffice === "uae") savedOffice = "dubai";
-    if (savedOffice) setOffice(savedOffice);
+
+    const syncOffice = savedOffice
+      ? setTimeout(() => setOffice(savedOffice), 0)
+      : null;
 
     const handleResize = () => {
       if (window.innerWidth >= 768) setIsMenuOpen(false);
     };
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    return () => {
+      if (syncOffice) clearTimeout(syncOffice);
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   const switchOffice = () => {

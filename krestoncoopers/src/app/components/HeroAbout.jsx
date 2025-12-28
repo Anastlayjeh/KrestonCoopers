@@ -1,13 +1,16 @@
 "use client";
 import React, { useEffect, useState, useRef } from 'react';
 
-// Use the uploaded image file (image_fff44a.png)
-const BACKGROUND_IMAGE_URL = "/uploaded:image_fff44a.png-ddc77d9d-9d17-440f-b725-8058ef0f485d"; 
-// Note: In a live Next.js app, you'd typically import the image or use the /public path. 
-// Using the file name as a reference based on the context.
+const BACKGROUND_IMAGES = {
+  ghana: '/images/ghana-bg.webp',
+  dubai: '/images/dubai-bg.webp',
+};
+
+const normalizeOfficeKey = (value) => (value === 'uae' ? 'dubai' : value);
 
 export default function AboutKrestonCoopers() {
   const [isVisible, setIsVisible] = useState(false);
+  const [officeKey, setOfficeKey] = useState('ghana');
   const sectionRef = useRef(null); 
   
   // 1. Trigger the fade-in animation on mount
@@ -18,6 +21,23 @@ export default function AboutKrestonCoopers() {
     }, 100);
 
     return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const savedOffice = normalizeOfficeKey(localStorage.getItem('office'));
+    if (savedOffice && BACKGROUND_IMAGES[savedOffice]) {
+      setOfficeKey(savedOffice);
+    }
+
+    const handleOfficeChange = (event) => {
+      const nextOffice = normalizeOfficeKey(event?.detail);
+      if (nextOffice && BACKGROUND_IMAGES[nextOffice]) {
+        setOfficeKey(nextOffice);
+      }
+    };
+
+    window.addEventListener('office-changed', handleOfficeChange);
+    return () => window.removeEventListener('office-changed', handleOfficeChange);
   }, []);
 
   // Helper function for animation classes and stagger delay
@@ -42,7 +62,7 @@ export default function AboutKrestonCoopers() {
       {/* Background Image and Dark Overlay */}
       <div 
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${BACKGROUND_IMAGE_URL})` }} 
+        style={{ backgroundImage: `url(${BACKGROUND_IMAGES[officeKey] || BACKGROUND_IMAGES.ghana})` }} 
       >
         {/* Semi-transparent Dark Blue Overlay for contrast */}
         <div className="absolute inset-0 bg-[#04366A] opacity-80"></div> 

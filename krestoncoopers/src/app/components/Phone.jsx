@@ -1,69 +1,95 @@
-'use client';
+"use client";
 
-import React, { useState, useEffect } from 'react';
-// Removed: import { Phone } from 'lucide-react'; 
+import React, { useState, useEffect } from "react";
+// Removed: import { Phone } from 'lucide-react';
 // The icon is now included inline as an SVG to resolve the dependency error.
 
 // --- CONFIGURATION ---
 
 const OFFICES = {
   GHANA: {
-    name: 'Ghana Office',
-    phone: '+233 242 754 688',
-    flagEmoji: <img src="/images/Flag_of_Ghana.svg.webp " className="w-13 h-10" alt="" />  ,
+    name: "Ghana Office",
+    phone: "+233 242 754 688",
+    flagEmoji: <img src="/images/Flag_of_Ghana.svg.webp " className="w-13 h-10" alt="" />,
   },
   DUBAI: {
-    name: 'Dubai Office',
-    phone: '+971 55 286 6413',
-    flagEmoji: <img src="/images/Flag-United-Arab-Emirates.webp " className="w-13 h-10" alt="" />  ,
+    name: "Dubai Office",
+    phone: "+971 55 286 6413",
+    flagEmoji: <img src="/images/Flag-United-Arab-Emirates.webp " className="w-13 h-10" alt="" />,
   },
 };
+
+const normalizeOfficeKey = (value) => (value === "uae" ? "dubai" : value);
+
+const OFFICE_BY_KEY = {
+  ghana: OFFICES.GHANA,
+  dubai: OFFICES.DUBAI,
+};
+
+const CallButton = ({ office }) => (
+  <div className="flex flex-col items-center min-w-[200px] sm:min-w-[280px] transition-transform duration-300 hover:scale-[1.03]">
+    {/* Flag (Now the sole identifier in this box) */}
+    <div className="mb-4 p-3 bg-white rounded-xl shadow-lg border border-gray-100 flex flex-col items-center">
+      <span className="text-5xl">{office.flagEmoji}</span>
+    </div>
+
+    {/* Phone Button */}
+    <a
+      href={`tel:${office.phone.replace(/\s/g, "")}`} // Ensure phone number is clean for tel: link
+      className="w-full inline-flex flex-col items-center justify-center py-4 px-6 bg-blue-600 text-white text-lg font-bold rounded-xl shadow-xl hover:bg-blue-700 transition-colors duration-300 active:scale-95"
+      aria-label={`Call us now at ${office.phone} (${office.name})`}
+    >
+      {/* INLINE SVG REPLACEMENT for Phone icon */}
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="w-5 h-5 mb-1" // Applying Tailwind classes here
+      >
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-5.65-5.65A19.79 19.79 0 0 1 2 4.18 2 2 0 0 1 4.18 2h3c.47 0 .94.18 1.25.52l4.44 4.71a1.99 1.99 0 0 1 0 2.76l-2.05 2.05a2.49 2.49 0 0 0 1.27 1.27l2.05-2.05a1.99 1.99 0 0 1 2.76 0l4.71 4.44c.34.31.52.78.52 1.25z" />
+      </svg>
+      {/* Only the phone number remains, replacing the "Call us now" text */}
+      <span className="mt-1 font-mono text-base sm:text-xl">{office.phone}</span>
+    </a>
+  </div>
+);
 
 // --- REACT COMPONENT ---
 
 const App = () => {
   const [isVisible, setIsVisible] = useState(false); // For animation
+  const [officeKey, setOfficeKey] = useState("ghana");
 
   // Animate elements on load
   useEffect(() => {
-    setIsVisible(true);
+    const timer = setTimeout(() => setIsVisible(true), 0);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const savedOffice = normalizeOfficeKey(localStorage.getItem("office"));
+    if (savedOffice && OFFICE_BY_KEY[savedOffice]) {
+      setOfficeKey(savedOffice);
+    }
+
+    const handleOfficeChange = (event) => {
+      const nextOffice = normalizeOfficeKey(event?.detail);
+      if (nextOffice && OFFICE_BY_KEY[nextOffice]) {
+        setOfficeKey(nextOffice);
+      }
+    };
+
+    window.addEventListener("office-changed", handleOfficeChange);
+    return () => window.removeEventListener("office-changed", handleOfficeChange);
   }, []);
 
   // Common transition class for fade-in effect
   const transitionClass = `transition-opacity duration-1000 ease-in-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`;
-
-  // Helper component for Call Button with Flag
-  const CallButton = ({ office }) => (
-    <div className="flex flex-col items-center min-w-[200px] sm:min-w-[280px] transition-transform duration-300 hover:scale-[1.03]">
-      {/* Flag (Now the sole identifier in this box) */}
-      <div className="mb-4 p-3 bg-white rounded-xl shadow-lg border border-gray-100 flex flex-col items-center">
-        <span className="text-5xl">{office.flagEmoji}</span>
-      </div>
-
-      {/* Phone Button */}
-      <a 
-        href={`tel:${office.phone.replace(/\s/g, '')}`} // Ensure phone number is clean for tel: link
-        className="w-full inline-flex flex-col items-center justify-center py-4 px-6 bg-blue-600 text-white text-lg font-bold rounded-xl shadow-xl hover:bg-blue-700 transition-colors duration-300 active:scale-95"
-        aria-label={`Call us now at ${office.phone} (${office.name})`}
-      >
-        {/* INLINE SVG REPLACEMENT for Phone icon */}
-        <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            viewBox="0 0 24 24" 
-            fill="none" 
-            stroke="currentColor" 
-            strokeWidth="2" 
-            strokeLinecap="round" 
-            strokeLinejoin="round" 
-            className="w-5 h-5 mb-1" // Applying Tailwind classes here
-        >
-            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-5.65-5.65A19.79 19.79 0 0 1 2 4.18 2 2 0 0 1 4.18 2h3c.47 0 .94.18 1.25.52l4.44 4.71a1.99 1.99 0 0 1 0 2.76l-2.05 2.05a2.49 2.49 0 0 0 1.27 1.27l2.05-2.05a1.99 1.99 0 0 1 2.76 0l4.71 4.44c.34.31.52.78.52 1.25z"/>
-        </svg>
-        {/* Only the phone number remains, replacing the "Call us now" text */}
-        <span className="mt-1 font-mono text-base sm:text-xl">{office.phone}</span>
-      </a>
-    </div>
-  );
+  const currentOffice = OFFICE_BY_KEY[officeKey] || OFFICES.GHANA;
 
   return (
     <div className="min-h-screen bg-gray-50 font-inter text-gray-800">
@@ -78,7 +104,7 @@ const App = () => {
             Contact Us
           </h1>
           <p className="text-lg text-gray-600">
-            We're here to support your business. Get in touch with our team.
+            We&apos;re here to support your business. Get in touch with our team.
           </p>
         </div>
       </header>
@@ -95,10 +121,9 @@ const App = () => {
             solutions, quicker and smarter.
           </p>
 
-          {/* Dual Call Buttons with Flags - Responsive for mobile/desktop */}
+          {/* Call Button with Flag - Responsive for mobile/desktop */}
           <div className="flex justify-center flex-wrap gap-8 mt-8">
-            <CallButton office={OFFICES.GHANA} />
-            <CallButton office={OFFICES.DUBAI} />
+            <CallButton office={currentOffice} />
           </div>
         </section>
       </main>

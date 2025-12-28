@@ -103,7 +103,8 @@ export default function WhyChooseUs() {
 
   // 1. Initial Mount Effect for Hydration Safety
   useEffect(() => {
-    setIsMounted(true);
+    const timer = setTimeout(() => setIsMounted(true), 0);
+    return () => clearTimeout(timer);
   }, []);
 
   // 2. Intersection Observer Effect for Scroll Animation

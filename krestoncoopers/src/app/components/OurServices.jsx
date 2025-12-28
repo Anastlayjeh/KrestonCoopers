@@ -21,9 +21,9 @@ const services = [
         />
       </svg>
     ),
-    title: 'Auditing',
+    title: 'Audit & Assurance Services',
     description:
-      'Thorough financial examination to enhance transparency and reliability.',
+      'Independent audit and assurance services that enhance transparency, credibility, and stakeholder confidence.',
     link: '#',
   },
   {
@@ -43,33 +43,12 @@ const services = [
         />
       </svg>
     ),
-    title: 'Excise Tax',
+    title: 'Tax & Advisory Services',
     description:
-      'Specialized assistance in excise tax assessment and reporting.',
+      'Strategic tax planning and advisory services designed to optimize compliance, efficiency, and long-term growth.',
     link: '#',
   },
-  {
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-8 w-8 text-blue-700"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        strokeWidth={2}
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M7 12l3-3 3 3 4-4M18 21v-4a4 4 0 00-4-4H9a4 4 0 00-4 4v4H3a2 2 0 01-2-2V3a2 2 0 012-2h18a2 2 0 012 2v18a2 2 0 01-2 2h-2z"
-        />
-      </svg>
-    ),
-    title: 'Consulting',
-    description:
-      'Proactive insights and strategies to optimize financial performance.',
-    link: '#',
-  },
+ 
   {
     icon: (
       <svg
@@ -87,52 +66,9 @@ const services = [
         />
       </svg>
     ),
-    title: 'Accounting',
+    title: 'Accounting Services',
     description:
-      'Expert management of financial records for informed decision-making',
-    link: '#',
-  },
-  {
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-8 w-8 text-blue-700"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        strokeWidth={2}
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.592 1L21 6m-4 2a2 2 0 11-4 0 2 2 0 014 0zM12 18c-1.11 0-2.08-.402-2.592-1L3 18m4-2a2 2 0 11-4 0 2 2 0 014 0z"
-        />
-      </svg>
-    ),
-    title: 'VAT',
-    description: 'Hassle-free VAT registration, filing, and compliance guidance.',
-    link: '#',
-  },
-  {
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-8 w-8 text-blue-700"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        strokeWidth={2}
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.01 12.01 0 002 12c0 2.972 1.232 5.664 3.243 7.659L12 22l6.757-3.341C20.768 17.664 22 14.972 22 12c0-1.789-.693-3.417-1.848-4.632z"
-        />
-      </svg>
-    ),
-    title: 'Risk & Compliance',
-    description:
-      'Comprehensive risk management and regulatory compliance solutions.',
+      'Comprehensive accounting solutions to ensure accurate financial records, compliance, and informed business decisions.',
     link: '#',
   },
 ];
@@ -145,7 +81,8 @@ export default function OurServices() {
 
   // Initial Mount Effect for Hydration Safety
   useEffect(() => {
-    setIsMounted(true); 
+    const timer = setTimeout(() => setIsMounted(true), 0);
+    return () => clearTimeout(timer);
   }, []);
 
   // Intersection Observer Effect for Scroll Animation

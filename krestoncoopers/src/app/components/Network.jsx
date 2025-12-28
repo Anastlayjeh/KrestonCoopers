@@ -102,7 +102,7 @@ const GlobalNetworkSection = () => {
 
               <p className="text-gray-700 mb-6 md:text-lg">
 
-                **Kreston Coopers** is a proud member of **Kreston Global**, one of the world's leading networks of independent accounting firms.
+                **Kreston Coopers** is a proud member of **Kreston Global**, one of the world&apos;s leading networks of independent accounting firms.
 
               </p>
 

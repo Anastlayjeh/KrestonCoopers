@@ -30,7 +30,7 @@ const CTABanner = () => {
         >
           {/* Main Heading */}
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-blue-900 mb-6 leading-tight">
-            Let's Discuss How We Can <br className="hidden sm:inline" />Support Your Business
+            Let&apos;s Discuss How We Can <br className="hidden sm:inline" />Support Your Business
           </h2>
 
           {/* Subtext */}

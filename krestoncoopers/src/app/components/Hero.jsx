@@ -4,39 +4,42 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
+const HERO_CONTENT = {
+  ghana: {
+    bgImage: "/images/ghana-bg.webp",
+    titlePart1: "Professional",
+    titleHighlight: "Accounting",
+    titlePart2: "& Business Advisory",
+    desc: "Providing trusted financial and advisory services across Ghana, helping organizations grow with confidence.",
+    image: "/images/Omar.webp",
+    accentColor: "text-[#F2A634]",
+  },
+  dubai: {
+    bgImage: "/images/dubai-bg.webp",
+    titlePart1: "International",
+    titleHighlight: "Audit",
+    titlePart2: "& Advisory Experts",
+    desc: "Serving corporations in the UAE with world-class financial, audit, and compliance services.",
+    image: "/images/Dabouss.webp",
+    accentColor: "text-[#F2A634]",
+  },
+};
+
+const mapOffice = (officeName) => (officeName === "uae" ? "dubai" : officeName);
+
 export default function Hero() {
-  const content = {
-    ghana: {
-      bgImage: "/images/ghana-bg.webp",
-      titlePart1: "Professional",
-      titleHighlight: "Accounting",
-      titlePart2: "& Business Advisory",
-      desc: "Providing trusted financial and advisory services across Ghana, helping organizations grow with confidence.",
-      image: "/images/Omar.webp",
-      accentColor: "text-[#F2A634]",
-    },
-    dubai: {
-      bgImage: "/images/dubai-bg.webp",
-      titlePart1: "International",
-      titleHighlight: "Audit",
-      titlePart2: "& Advisory Experts",
-      desc: "Serving corporations in the UAE with world-class financial, audit, and compliance services.",
-      image: "/images/Dabouss.webp",
-      accentColor: "text-[#F2A634]",
-    },
-  };
 
   const [office, setOffice] = useState("ghana");
-  const current = content[office] || content.ghana;
+  const current = HERO_CONTENT[office] || HERO_CONTENT.ghana;
 
   useEffect(() => {
-    const mapOffice = (o) => (o === "uae" ? "dubai" : o);
     const saved = mapOffice(localStorage.getItem("office"));
-    if (saved && content[saved] && saved !== office) setOffice(saved);
+    const syncOffice =
+      saved && HERO_CONTENT[saved] ? setTimeout(() => setOffice(saved), 0) : null;
 
     const handleOfficeChange = (event) => {
       const newOffice = event?.detail || mapOffice(localStorage.getItem("office")) || "ghana";
-      if (content[newOffice]) {
+      if (HERO_CONTENT[newOffice]) {
         setOffice(newOffice);
         localStorage.setItem("office", newOffice);
       }
@@ -49,8 +52,11 @@ export default function Hero() {
       window.dispatchEvent(new CustomEvent("office-changed", { detail: name }));
     };
 
-    return () => window.removeEventListener("office-changed", handleOfficeChange);
-  }, [office]);
+    return () => {
+      if (syncOffice) clearTimeout(syncOffice);
+      window.removeEventListener("office-changed", handleOfficeChange);
+    };
+  }, []);
 
   return (
     <section className="relative w-full py-16 md:py-20">

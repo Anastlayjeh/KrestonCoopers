@@ -14,7 +14,8 @@ const CtaSectionColorMatched = () => {
 
     // 2. Set isMounted to true after the first render (on the client)
     useEffect(() => {
-        setIsMounted(true);
+        const timer = setTimeout(() => setIsMounted(true), 0);
+        return () => clearTimeout(timer);
     }, []);
 
     // Animation variants

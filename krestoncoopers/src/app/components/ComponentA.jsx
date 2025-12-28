@@ -69,7 +69,7 @@ export default function WhoWeAre() {
           <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
             We work closely with our clients, adding value through professional
             guidance and innovative solutions. Our approach is built on
-            understanding each client's unique business needs and challenges.
+            understanding each client&apos;s unique business needs and challenges.
           </p>
         </div>
 
