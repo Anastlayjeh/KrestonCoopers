@@ -92,7 +92,7 @@ const GlobalNetworkSection = () => {
 
               <h2 className="text-4xl font-bold text-blue-900 mb-4">
 
-                Global Network
+                Global Presence
 
               </h2>
 
@@ -102,7 +102,7 @@ const GlobalNetworkSection = () => {
 
               <p className="text-gray-700 mb-6 md:text-lg">
 
-                **Kreston Coopers** is a proud member of **Kreston Global**, one of the world&apos;s leading networks of independent accounting firms.
+                Kreston Coopers operates with a growing international outlook through its direct presence in Ghana and Dubai, enabling us to support clients with cross-border operations and regional business interests.
 
               </p>
 
@@ -110,13 +110,19 @@ const GlobalNetworkSection = () => {
 
               <p className="text-gray-700 mb-8 md:text-lg">
 
-                This affiliation provides our clients with access to **international expertise and resources**, while maintaining the personalized service of a local firm.
+                Our structure allows us to deliver consistent professional standards, clear communication, and practical advisory support across jurisdictions, while retaining the responsiveness and personalised service of a partner-led firm.
 
               </p>
 
 
 
-              {/* Feature 1: Global Reach */}
+              <h3 className="text-xl font-bold text-blue-900 mb-4 mt-8">
+
+                Regional Coverage
+
+              </h3>
+
+
 
               <div className="flex items-start mb-6">
 
@@ -146,9 +152,9 @@ const GlobalNetworkSection = () => {
 
                 <div>
 
-                  <h4 className="font-bold text-lg text-blue-900">Global Reach</h4>
+                  <h4 className="font-bold text-lg text-blue-900">Ghana Office</h4>
 
-                  <p className="text-gray-600">Access to over 200 firms across 115 countries worldwide</p>
+                  <p className="text-gray-600">Serving local and regional clients with strong knowledge of Ghanaian regulatory, tax, and reporting frameworks.</p>
 
                 </div>
 
@@ -156,9 +162,7 @@ const GlobalNetworkSection = () => {
 
 
 
-              {/* Feature 2: Local Expertise */}
-
-              <div className="flex items-start">
+              <div className="flex items-start mb-6">
 
                 <motion.div
 
@@ -186,13 +190,28 @@ const GlobalNetworkSection = () => {
 
                 <div>
 
-                  <h4 className="font-bold text-lg text-blue-900">Local Expertise</h4>
+                  <h4 className="font-bold text-lg text-blue-900">Dubai Office</h4>
 
-                  <p className="text-gray-600">Combined local knowledge with international best practices</p>
+                  <p className="text-gray-600">Supporting clients with Middle East business interests, international structuring, advisory coordination, and cross-border compliance requirements.</p>
 
                 </div>
 
               </div>
+
+
+
+              <h3 className="text-xl font-bold text-blue-900 mb-4 mt-8">
+
+                Cross-Border Capability
+
+              </h3>
+
+              <ul className="space-y-2 text-gray-600 list-disc list-inside">
+                <li>Direct coordination between Ghana and Dubai offices</li>
+                <li>Practical support for businesses operating across multiple jurisdictions</li>
+                <li>Strong understanding of international financial reporting and regulatory expectations</li>
+                <li>Seamless communication and partner-level oversight on all engagements</li>
+              </ul>
 
 
 

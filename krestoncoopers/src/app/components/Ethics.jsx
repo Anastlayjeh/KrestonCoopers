@@ -9,28 +9,8 @@ import { motion } from 'framer-motion';
 
 const standards = [
   {
-    title: "Independence",
-    description: "Maintaining objectivity in all professional relationships",
-    icon: (
-      <svg className="w-8 h-8 md:w-10 md:h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
-        {/* Placeholder for Scale Icon */}
-        <path d="M14 10H2v2h12v-2zm0-4H2v2h12V6zm4 8v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4z" />
-      </svg>
-    ),
-  },
-  {
-    title: "Objectivity",
-    description: "Unbiased judgment in all professional matters",
-    icon: (
-      <svg className="w-8 h-8 md:w-10 md:h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
-        {/* Placeholder for Target/Eye Icon */}
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14a4 4 0 100 8 4 4 0 000-8z" />
-      </svg>
-    ),
-  },
-  {
-    title: "Full Disclosure",
-    description: "Transparent communication with all stakeholders",
+    title: "International Financial Reporting Standards (IFRS & IFRS for SMEs)",
+    description: "Applied to financial reporting across engagements.",
     icon: (
       <svg className="w-8 h-8 md:w-10 md:h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
         {/* Placeholder for Document Icon */}
@@ -39,18 +19,28 @@ const standards = [
     ),
   },
   {
-    title: "Confidentiality",
-    description: "Protecting client information with utmost care",
+    title: "International Standards on Auditing (ISA)",
+    description: "Guides our audit planning, execution, and reporting.",
     icon: (
       <svg className="w-8 h-8 md:w-10 md:h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
-        {/* Placeholder for Lock Icon */}
-        <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" />
+        {/* Placeholder for Target/Eye Icon */}
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14a4 4 0 100 8 4 4 0 000-8z" />
       </svg>
     ),
   },
   {
-    title: "Professional Conduct",
-    description: "Upholding the highest standards of behavior",
+    title: "Ghana Revenue Authority (GRA) Tax Laws & Regulations",
+    description: "Ghana Revenue Authority (GRA) tax laws and regulations.",
+    icon: (
+      <svg className="w-8 h-8 md:w-10 md:h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+        {/* Placeholder for Scale Icon */}
+        <path d="M14 10H2v2h12v-2zm0-4H2v2h12V6zm4 8v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4z" />
+      </svg>
+    ),
+  },
+  {
+    title: "Professional & Ethical Requirements",
+    description: "Professional and ethical requirements of recognised accounting bodies.",
     icon: (
       <svg className="w-8 h-8 md:w-10 md:h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
         {/* Placeholder for Badge Icon */}
@@ -96,16 +86,16 @@ const EthicsSection = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-            Ethics &amp; Professional Standards
+            Professional Standards &amp; Compliance
           </h2>
           <p className="text-lg md:text-xl max-w-3xl mx-auto mb-12">
-            We adhere to the highest ethical and professional standards in all aspects of our practice, ensuring integrity and trust in every engagement.
+            Kreston Coopers conducts all engagements in accordance with applicable professional and regulatory frameworks, including:
           </p>
         </motion.header>
 
         {/* Standards Grid - Animated on Scroll */}
         <motion.div
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8"
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -132,6 +122,16 @@ const EthicsSection = () => {
             </motion.div>
           ))}
         </motion.div>
+
+        <motion.p
+          initial={{ y: 10, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="text-sm md:text-base max-w-4xl mx-auto mt-10 text-blue-100/90"
+        >
+          Our work is designed to meet the expectations of regulators, financial institutions, donors, boards, and shareholders.
+        </motion.p>
       </div>
     </div>
   );

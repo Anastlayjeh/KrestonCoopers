@@ -87,19 +87,32 @@ const OurLeadershipSection = () => {
           className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-center mb-4 text-[#04366A]"
           style={{ color: BRAND_BLUE }}
         >
-          Our Leadership
+          Leadership &amp; Governance
           <div className="mx-auto mt-2 h-1 w-20 bg-blue-600 rounded"></div> {/* Underline */}
         </motion.h2>
 
-        <motion.p
+        <motion.div
           initial={{ opacity: 0, y: -10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-base sm:text-lg md:text-xl text-center max-w-3xl mx-auto mb-12 md:mb-16 text-gray-700"
         >
-          Meet the experienced professionals who lead our firm with vision, integrity, and commitment to excellence.
-        </motion.p>
+          <p>
+            Our firm is led by experienced professionals with strong backgrounds in audit, taxation,
+            financial reporting, and advisory services.
+          </p>
+          <p className="mt-4">Every engagement is partner-led, ensuring:</p>
+          <ul className="mt-3 space-y-2 list-disc list-inside max-w-md mx-auto text-left">
+            <li>Proper risk assessment</li>
+            <li>High-quality review</li>
+            <li>Clear communication with management and stakeholders</li>
+          </ul>
+          <p className="mt-4">
+            This structure allows us to maintain consistency, accountability, and professional
+            oversight across all assignments.
+          </p>
+        </motion.div>
 
         {/* Responsive Grid for Leaders */}
         <div className="grid grid-cols-1 gap-10 md:grid-cols-3 max-w-6xl mx-auto">

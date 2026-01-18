@@ -6,6 +6,7 @@ import HowWeServeSection from "../components/HowServe";
 import WhoWeAre from "../components/WhoWeAre";
 import Ethics from "../components/Ethics";
 import Network from "../components/Network";
+import OurClients from "../components/OurClients";
 import Discuss from "../components/Discuss";
 import Footer from "../components/Footer";
 export default function Home() {
@@ -16,8 +17,9 @@ export default function Home() {
        <ComponentA/>
        <Mission/>
        <HowWeServeSection/>
-       <WhoWeAre/>
        <Ethics/>
+       <WhoWeAre/>
+       <OurClients/>
        <Network/>
        <Discuss/>
          <Footer/>

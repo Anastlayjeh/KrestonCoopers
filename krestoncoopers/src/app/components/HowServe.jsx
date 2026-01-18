@@ -68,7 +68,7 @@ const ServiceCard = ({ title, description, icon: IconComponent, delay = 0 }) => 
       <h3
         className="text-xl md:text-2xl font-semibold mb-3 text-[#213f70]"
       >
-        **{title}**
+        {title}
       </h3>
       
       {/* Description */}
@@ -84,33 +84,23 @@ const ServiceCard = ({ title, description, icon: IconComponent, delay = 0 }) => 
 const HowWeServeSection = () => {
   const servicePoints = [
     {
-      title: "Client-Focused",
-      description: "Clients are our most important asset. We prioritize their success and growth in everything we do.",
-      icon: UsersIcon
-    },
-    {
-      title: "Deep Understanding",
-      description: "We invest time to understand our clients' businesses deeply, enabling tailored solutions.",
+      title: "Improve Financial Discipline",
+      description: "Strengthen financial routines that support accurate reporting and accountability.",
       icon: ChartLineIcon
     },
     {
-      title: "Trust & Confidentiality",
-      description: "We maintain the highest standards of confidentiality and trust in all client relationships.",
+      title: "Strengthen Internal Controls",
+      description: "Build control environments that reduce risk and support compliance.",
       icon: ShieldIcon
     },
     {
-      title: "Exceptional Expertise",
-      description: "Our team possesses exceptional skills and experience across diverse professional services.",
-      icon: GraduationCapIcon
+      title: "Enhance Governance Structures",
+      description: "Support stronger oversight through clear governance frameworks.",
+      icon: UsersIcon
     },
     {
-      title: "Accuracy & Ethics",
-      description: "We focus on accuracy, ethics, and professionalism in every engagement we undertake.",
-      icon: CheckCircleIcon
-    },
-    {
-      title: "Innovation",
-      description: "We continuously seek innovative approaches to deliver superior value and service quality.",
+      title: "Support Informed Decision-Making",
+      description: "Provide insight that helps leaders make timely, confident decisions.",
       icon: LightbulbIcon
     },
   ];
@@ -130,7 +120,7 @@ const HowWeServeSection = () => {
           transition={{ duration: 0.6 }}
           className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-center mb-4 text-[#213f70]"
         >
-          How We Serve
+          Our Commitment
         </motion.h2>
 
         {/* Section Sub-description: Responsive Text Sizing */}
@@ -141,13 +131,13 @@ const HowWeServeSection = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-base sm:text-lg md:text-xl text-center max-w-3xl mx-auto mb-12 md:mb-16 text-gray-700"
         >
-          Our approach is centered on building lasting relationships and delivering measurable value to every client we serve.
+          At Kreston Coopers, we go beyond checklists and reports. We work closely with our clients to:
         </motion.p>
 
         {/* Grid for Service Cards: Fully Responsive Grid */}
         <div
           // FIX 3: Condensed className for the main grid container.
-          className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto"
+          className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto"
         >
           {servicePoints.map((point, index) => (
             <ServiceCard
@@ -159,6 +149,16 @@ const HowWeServeSection = () => {
             />
           ))}
         </div>
+
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-base sm:text-lg md:text-xl text-center max-w-3xl mx-auto mt-10 text-gray-700"
+        >
+          Our goal is to be a long-term professional partner, not just a service provider.
+        </motion.p>
       </div>
     </div>
   );

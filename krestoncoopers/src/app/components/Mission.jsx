@@ -62,7 +62,7 @@ const AnimatedCard = ({ title, content, icon: IconComponent, delay = 0 }) => {
       <h3
         className="text-xl sm:text-2xl font-bold mb-3 text-[#213f70]"
       >
-        **{title}**
+        {title}
       </h3>
       <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
         {content}
@@ -100,7 +100,7 @@ const MissionVisionSection = () => {
           {/* Mission Card */}
           <AnimatedCard
             title="Our Mission"
-            content="To provide outstanding and innovative audit, tax, accounting, and business advisory services of exceptional value and superior quality."
+            content="To provide reliable audit, tax, and advisory services that strengthen governance, enhance financial transparency, and support sustainable growth for our clients."
             icon={BullseyeIcon}
             delay={0.1} // Stagger
           />
@@ -108,7 +108,7 @@ const MissionVisionSection = () => {
           {/* Vision Card */}
           <AnimatedCard
             title="Our Vision"
-            content="To be one of the leading audit, tax, and accountancy firms delivering exceptional quality of service."
+            content="To be a trusted professional services firm recognised for integrity, technical competence, and practical insight, supporting organisations to meet regulatory requirements while achieving long-term business objectives."
             icon={EyeIcon}
             delay={0.3} // Stagger
           />

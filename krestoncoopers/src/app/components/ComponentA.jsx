@@ -2,10 +2,26 @@
 import React, { useEffect, useState } from "react";
 
 const coreValues = [
-  "Confidentiality",
-  "Independence",
-  "Integrity",
-  "Professionalism",
+  {
+    title: "Integrity",
+    description: "We uphold the highest ethical standards in all our professional engagements.",
+  },
+  {
+    title: "Professional Excellence",
+    description: "Our work is guided by recognised accounting, auditing, and tax standards.",
+  },
+  {
+    title: "Independence & Objectivity",
+    description: "We maintain professional independence and unbiased judgment at all times.",
+  },
+  {
+    title: "Client-Focused Solutions",
+    description: "We provide practical advice aligned with our clients' operational and regulatory realities.",
+  },
+  {
+    title: "Confidentiality & Trust",
+    description: "Client information is treated with strict confidentiality and professional care.",
+  },
 ];
 
 // Define Brand Colors for consistency
@@ -61,15 +77,16 @@ export default function WhoWeAre() {
 
           {/* Paragraphs */}
           <p className="text-base sm:text-lg text-gray-600 mb-6 leading-relaxed">
-            Kreston Coopers provides **comprehensive accounting, auditing,
-            taxation, and business advisory services** to a diverse range of clients
-            across multiple industries.
+            Kreston Coopers is a professional firm of Chartered Accountant, Auditors,
+            Tax Practitioners, and Business Advisors providing high-quality assurance,
+            tax, and advisory services to businesses, non-profit organizations, and
+            public-interest institutions.
           </p>
 
           <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
-            We work closely with our clients, adding value through professional
-            guidance and innovative solutions. Our approach is built on
-            understanding each client&apos;s unique business needs and challenges.
+            We are committed to delivering clarity, compliance, and confidence through
+            practical, standards-driven solutions tailored to the realities of our
+            clients&apos; operations.
           </p>
         </div>
 
@@ -79,10 +96,9 @@ export default function WhoWeAre() {
           <p 
             className={`text-base sm:text-lg text-gray-600 mb-8 leading-relaxed ${getAnimationClasses(200)}`}
           >
-            Our staff are highly trained, qualified, and experienced professionals
-            who are dedicated to delivering **exceptional service quality**. We invest
-            continuously in professional development to ensure our team remains
-            at the forefront of industry knowledge.
+            Our approach combines technical excellence, ethical practice, and hands-on
+            partner involvement, ensuring that every engagement adds real value beyond
+            statutory compliance.
           </p>
 
           {/* Core Values Box (Staggered delay: 400ms) */}
@@ -98,9 +114,9 @@ export default function WhoWeAre() {
             >
               Our Core Values
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-4">
               {coreValues.map((value, index) => (
-                <li key={index} className="flex items-start text-gray-700 text-base">
+                <li key={index} className="flex items-start">
                   {/* Custom Checkmark Icon (using Tailwind color) */}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -115,7 +131,12 @@ export default function WhoWeAre() {
                       clipRule="evenodd"
                     />
                   </svg>
-                  <span>{value}</span>
+                  <div>
+                    <p className="text-sm sm:text-base font-semibold text-gray-800">
+                      {value.title}
+                    </p>
+                    <p className="text-sm text-gray-600">{value.description}</p>
+                  </div>
                 </li>
               ))}
             </ul>
