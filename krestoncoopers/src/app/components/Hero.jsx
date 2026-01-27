@@ -11,7 +11,7 @@ const HERO_CONTENT = {
     titleHighlight: "Accounting",
     titlePart2: "& Business Advisory",
     desc: "Providing trusted financial and advisory services across Ghana, helping organizations grow with confidence.",
-    image: "/images/Omar.webp",
+    image: "/images/Omar-removebg-preview.png",
     accentColor: "text-[#F2A634]",
   },
   dubai: {
@@ -20,7 +20,7 @@ const HERO_CONTENT = {
     titleHighlight: "Audit",
     titlePart2: "& Advisory Experts",
     desc: "Serving corporations in the UAE with world-class financial, audit, and compliance services.",
-    image: "/images/Dabouss.webp",
+    image: "/images/Dabouss.png",
     accentColor: "text-[#F2A634]",
   },
 };

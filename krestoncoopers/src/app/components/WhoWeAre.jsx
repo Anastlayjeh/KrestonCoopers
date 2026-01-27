@@ -5,13 +5,22 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 // Use placeholder image URLs for demonstration (replace with actual paths)
-const OMAR_IMAGE = "/images/Omar.webp"; // Placeholder path
-const MICHAEL_IMAGE = "/images/Apoum.webp"; // Placeholder path
-const SARAH_IMAGE = "/images/Dabouss.webp"; // Placeholder path
+const OMAR_IMAGE = "/images/Omar-removebg-preview.png"; // Placeholder path
+const MICHAEL_IMAGE = "/images/Apoum.png"; // Placeholder path
+const SARAH_IMAGE = "/images/Dabouss.png"; // Placeholder path
 
 
 // Reusable Profile Card Component
-const ProfileCard = ({ name, title, experience, bio, imageUrl, delay = 0 }) => {
+const ProfileCard = ({
+  name,
+  title,
+  experience,
+  bio,
+  imageUrl,
+  delay = 0,
+  imageBgClass = "bg-white",
+  imageFitClass = "object-cover",
+}) => {
   const cardVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
@@ -29,12 +38,12 @@ const ProfileCard = ({ name, title, experience, bio, imageUrl, delay = 0 }) => {
       viewport={{ once: true, amount: 0.3 }}
       className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col items-center text-center p-0 transition-all duration-300 transform hover:shadow-2xl"
     >
-      <div className="w-full h-72 md:h-80 overflow-hidden">
+      <div className={`w-full h-72 md:h-80 overflow-hidden ${imageBgClass}`}>
         {/* Replace the image tag with a Next.js <Image> component for production */}
         <img
           src={imageUrl} 
           alt={name}
-          className="w-full h-full object-cover"
+          className={`w-full h-full ${imageFitClass}`}
         />
       </div>
 
@@ -57,19 +66,23 @@ const OurLeadershipSection = () => {
       experience: "20+ Years Experience",
       bio: "A seasoned professional with extensive experience in audit, taxation, and business advisory. Omar leads our strategic initiatives and maintains our commitment to excellence.",
       imageUrl: OMAR_IMAGE,
+      imageBgClass: "bg-gradient-to-b from-slate-100 to-slate-200",
+      imageFitClass: "object-contain",
     },
     {
-      name: "Michael Stevens",
-      title: "Senior Partner (CPA, MSc)",
-      experience: "25+ Years Experience",
-      bio: "Specializing in corporate finance and advisory services, Michael brings deep industry knowledge and strategic insight to complex business challenges.",
+      name: "Osman Zowk",
+      title: "Audit & Accounts Manager",
+      experience: "15+ Years Experience",
+      bio: "Manager with experience since 2015, leading audit and accounts engagements with a focus on quality and compliance.",
       imageUrl: MICHAEL_IMAGE,
+      imageBgClass: "bg-white p-6",
+      imageFitClass: "object-contain",
     },
     {
-      name: "Sarah Mitchell",
+      name: "Imad Daboussi",
       title: "Partner (ACCA, LLB)",
-      experience: "18+ Years Experience",
-      bio: "An expert in regulatory compliance and risk management, Sarah ensures our clients navigate complex regulatory environments with confidence.",
+      experience: "10+ Years Experience",
+      bio: "An expert in regulatory compliance and risk management, Imad ensures our clients navigate complex regulatory environments with confidence.",
       imageUrl: SARAH_IMAGE,
     },
   ];
@@ -124,6 +137,8 @@ const OurLeadershipSection = () => {
               experience={leader.experience}
               bio={leader.bio}
               imageUrl={leader.imageUrl}
+              imageBgClass={leader.imageBgClass}
+              imageFitClass={leader.imageFitClass}
               delay={0.1 + index * 0.15}
             />
           ))}

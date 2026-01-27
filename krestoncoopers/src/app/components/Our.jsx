@@ -348,6 +348,11 @@ const SERVICE_ICON_BY_TITLE = {
   "Tax Reviews & Health Checks": IconPulse,
   "GRA Audit Support": IconScale,
   "Tax Objections & Advisory": IconMessage,
+  "Corporate Tax Registration / Deregistration": IconFilePlus,
+  "VAT Tax Registration / Deregistration": IconFilePlus,
+  "Corporate Tax Return Filing": IconFileCheck,
+  "VAT Return Filing": IconFileCheck,
+  "VAT Refund": IconWallet,
   "Financial Reporting Advisory": IconBarChart,
   "Business Setup & Structuring": IconBuilding,
   "Financial Modelling & Forecasting": IconLineChart,
@@ -381,10 +386,12 @@ const SERVICE_ICON_BY_TITLE = {
   "Excise Goods Registration": IconTag,
   "Internal Audit": IconShieldCheck,
   "External Audit": IconSearch,
+  "Liquidation Audit": IconFileMinus,
   "Compliance Audit": IconCheckSquare,
   "Inventory Control": IconBoxes,
   "Sales Audit": IconLineChart,
   "IFRS Implementation": IconBook,
+  "Audited Financial Statements for Freezone License Renewal": IconFileCheck,
 };
 
 const getServiceIcon = (title) =>
@@ -496,49 +503,31 @@ const ACCOUNTING_BOOKKEEPING = {
 
 const DUBAI_SERVICES = [
   {
-    categoryTitle: "Tax Services",
+    categoryTitle: "Auditing Services",
     services: [
       {
-        title: "Corporate Tax Registration in Dubai",
-        listItems: ["How to Register for UAE Corporate Tax in 2025"],
-        icon: icons.corporateTax,
+        title: "Internal Audit",
+        description:
+          "Independent review of internal controls, processes, and governance.",
+        icon: icons.internalAudit,
       },
       {
-        title: "Freezone Corporate Tax",
-        listItems: ["A Complete Guide for Businesses"],
-        icon: icons.excise,
+        title: "External Audit",
+        description:
+          "Independent assurance on financial statements and stakeholder reporting.",
+        icon: icons.externalAudit,
       },
       {
-        title: "Trial Balance & Profit and Loss Statements",
-        listItems: [
-          "Vital for accurate accounting and corporate tax compliance",
-        ],
-        icon: icons.excise,
+        title: "Liquidation Audit",
+        description:
+          "Audit support during liquidation or closure processes.",
+        icon: icons.statutoryAudit,
       },
       {
-        title: "Stockpile Audit",
-        listItems: ["Comprehensive assessment of excise tax stockpile records"],
-        icon: icons.excise,
-      },
-      {
-        title: "Excise Tax De-Registration",
-        listItems: ["Streamlining the de-registration process"],
-        icon: icons.excise,
-      },
-      {
-        title: "Excise Return Filing",
-        listItems: ["Accurate and timely excise return filing"],
-        icon: icons.excise,
-      },
-      {
-        title: "Excise Declaration",
-        listItems: ["Get FTA excise tax approval fast and hassle-free."],
-        icon: icons.excise,
-      },
-      {
-        title: "Excise Goods Registration",
-        listItems: ["FTA product registration made simple."],
-        icon: icons.excise,
+        title: "Audited Financial Statements for Freezone License Renewal",
+        description:
+          "Audited financial statements prepared to meet renewal requirements.",
+        icon: icons.vatAudit,
       },
     ],
   },
@@ -546,42 +535,119 @@ const DUBAI_SERVICES = [
   ACCOUNTING_BOOKKEEPING,
 
   {
-    categoryTitle: "Auditing Services",
+    categoryTitle: "Tax Services",
     services: [
       {
-        title: "Internal Audit",
+        title: "Corporate Tax Registration / Deregistration",
         description:
-          "Independent assessment of your organization’s internal controls.",
+          "Registration and deregistration support for corporate tax obligations.",
+        icon: icons.corporateTax,
+      },
+      {
+        title: "VAT Tax Registration / Deregistration",
+        description: "VAT registration and deregistration support for compliant setup.",
+        icon: icons.vatAudit,
+      },
+      {
+        title: "Corporate Tax Return Filing",
+        description:
+          "Preparation and filing of corporate tax returns.",
+        icon: icons.corporateTax,
+      },
+      {
+        title: "VAT Return Filing",
+        description: "Accurate VAT return preparation and submission.",
+        icon: icons.vatAudit,
+      },
+      {
+        title: "VAT Refund",
+        description:
+          "Support with VAT refund claims and documentation.",
+        icon: icons.vatAudit,
+      },
+      {
+        title: "Excise Return Filing",
+        description:
+          "Excise return preparation and timely filing.",
+        icon: icons.excise,
+      },
+    ],
+  },
+
+  {
+    categoryTitle: "Advisory & Consulting",
+    services: [
+      {
+        title: "Financial Reporting Advisory",
+        description:
+          "Support with financial reporting frameworks, policies, and statement preparation.",
+        icon: icons.financial,
+      },
+      {
+        title: "Business Setup & Structuring",
+        description:
+          "Advisory on company formation, restructuring, and operational setup.",
+        icon: icons.inventory,
+      },
+      {
+        title: "Financial Modelling & Forecasting",
+        description:
+          "Development of financial models, budgets, and projections for planning and investment decisions.",
+        icon: icons.cost,
+      },
+      {
+        title: "Governance & Risk Advisory",
+        description:
+          "Strengthening governance structures, internal controls, and risk management frameworks.",
         icon: icons.internalAudit,
       },
       {
-        title: "External Audit",
+        title: "Process Improvement",
         description:
-          "Independent financial statement verification for stakeholders.",
+          "Review and enhancement of financial and operational processes to improve efficiency.",
+        icon: icons.inventory,
+      },
+      {
+        title: "Management & Board Reporting",
+        description:
+          "Preparation of management and board-level reports to support oversight and decision-making.",
+        icon: icons.financial,
+      },
+    ],
+  },
+
+  {
+    categoryTitle: "Cross-Border & Regional Support",
+    services: [
+      {
+        title: "Ghana-Dubai Coordination",
+        description:
+          "Seamless coordination of services across Ghana and Dubai offices.",
         icon: icons.externalAudit,
       },
       {
-        title: "Compliance Audit",
+        title: "Cross-Border Advisory",
         description:
-          "Verifying adherence to regulations and industry standards.",
+          "Advisory support for businesses operating across multiple jurisdictions.",
         icon: icons.externalAudit,
       },
       {
-        title: "Inventory Control",
+        title: "Regional Compliance Support",
         description:
-          "Ensure regulatory compliance and optimize inventory systems.",
-        icon: icons.externalAudit,
-      },
-      {
-        title: "Sales Audit",
-        description: "Accurate assessment of sales processes and performance.",
+          "Assistance with regional regulatory and reporting requirements.",
         icon: icons.statutoryAudit,
       },
       {
-        title: "IFRS Implementation",
+        title: "International Structuring Support",
         description:
-          "Implementing International Financial Reporting Standards.",
-        icon: icons.vatAudit,
+          "Support for business structuring and operational alignment across borders.",
+        icon: icons.cost,
+      },
+      {
+        title: "Partner-Led Oversight",
+        description:
+          "Direct partner involvement to ensure quality, consistency, and accountability.",
+        icon: icons.internalAudit,
       },
     ],
   },
