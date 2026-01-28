@@ -6,8 +6,8 @@ import { motion } from 'framer-motion';
 
 // Use placeholder image URLs for demonstration (replace with actual paths)
 const OMAR_IMAGE = "/images/Omar-removebg-preview.png"; // Placeholder path
-const MICHAEL_IMAGE = "/images/Apoum.png"; // Placeholder path
-const SARAH_IMAGE = "/images/Dabouss.png"; // Placeholder path
+const MICHAEL_IMAGE = "/images/Apoum.webp"; // Placeholder path
+const SARAH_IMAGE = "/images/Dabouss.webp"; // Placeholder path
 
 
 // Reusable Profile Card Component
