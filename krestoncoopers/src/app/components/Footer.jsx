@@ -180,7 +180,7 @@ export default function Footer() {
         <div className="border-t border-gray-300 pt-4 pb-4 text-center text-xs sm:text-sm text-gray-600">
           Copyright &copy; {new Date().getFullYear()} Kreston Coopers. All rights reserved. Developed by 
           <a 
-            href="https://anas.dev"
+            href="https://www.instagram.com/anastlayjeh/"
             target="_blank" 
             rel="noopener noreferrer"
             className="font-medium text-gray-800 hover:text-blue-900 transition duration-200 ml-1"

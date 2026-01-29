@@ -20,7 +20,7 @@ const HERO_CONTENT = {
     titleHighlight: "Audit",
     titlePart2: "& Advisory Experts",
     desc: "Serving corporations in the UAE with world-class financial, audit, and compliance services.",
-    image: "/images/Dabouss.png",
+    image: "/images/Dabouss.webp",
     accentColor: "text-[#F2A634]",
   },
 };
@@ -100,13 +100,14 @@ export default function Hero() {
         </div>
 
         {/* IMAGE */}
-        <div className="relative w-full max-w-xs mx-auto h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 mt-10 lg:mt-0 lg:flex-none">
+        <div className="relative w-full max-w-xs mx-auto h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 mt-10 lg:mt-0 lg:flex-none ">
           <Image
             src={current.image}
+            
             alt="Hero image"
             fill
             priority
-            className="rounded-xl shadow-2xl object-cover"
+            className="rounded-xl shadow-2xl object-contain p-4"
           />
         </div>
       </div>

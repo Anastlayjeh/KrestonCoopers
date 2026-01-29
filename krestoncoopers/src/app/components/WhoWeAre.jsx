@@ -84,6 +84,8 @@ const OurLeadershipSection = () => {
       experience: "10+ Years Experience",
       bio: "An expert in regulatory compliance and risk management, Imad ensures our clients navigate complex regulatory environments with confidence.",
       imageUrl: SARAH_IMAGE,
+       imageBgClass: "bg-white p-6",
+      imageFitClass: "object-contain",
     },
   ];
   const BRAND_BLUE = '#04366A';
